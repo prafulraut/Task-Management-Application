@@ -1,0 +1,47 @@
+<div class="mt-5">
+<div class="container mt-2 bg-primary">
+  <h2 class="text-white">Add New Task</h2>
+  <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        required
+        formControlName="title"
+      >
+      <div *ngIf="taskForm.get('title').invalid && taskForm.get('title').touched" class="text-danger">
+        Title is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        required
+        formControlName="description"
+      ></textarea>
+      <div *ngIf="taskForm.get('description').invalid && taskForm.get('description').touched" class="text-danger">
+        Description is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="dueDate">Due Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="dueDate"
+        required
+        formControlName="dueDate"
+      >
+      <div *ngIf="taskForm.get('dueDate').invalid && taskForm.get('dueDate').touched" class="text-danger">
+        Due Date is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-lg btn-success mb-2" [disabled]="taskForm.invalid">Add Task</button>
+  </form>
+</div>
+</div>
+
